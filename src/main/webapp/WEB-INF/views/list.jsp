@@ -9,6 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Essuyo</title>
+
 <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/backpack.png">
 <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css">
 <!-- Google Fonts -->
