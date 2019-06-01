@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ page import="com.webproject.essuyo.utility.CommonUtil" %>
 <!DOCTYPE html>
 <html >
 <head>
@@ -288,42 +288,54 @@ $(document).ready(function() {
 			
 			//결제하기 버튼 클릭시 온클릭함수
 			$("#res-submit10").on("click", function() {
-				var productCount = $("#productCount").val();
-				var totalPrice = productCount * parseInt("${product.price}");
-				
-				var IMP = window.IMP; // 생략해도 괜찮습니다.
-				IMP.init("imp66707057"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
-				
-				// IMP.request_pay(param, callback) 호출
-				IMP.request_pay({ // param
-				    pg: "html	5_inicis",
-				    pay_method: "card",
-				    merchant_uid: "ORD20180131-0000010",
-				    name: "${company.name}",
-				    amount: totalPrice,	
-				    buyer_email: "${sessionScope.login}",
-				    buyer_name: "${sessionScope.name}",
-				    buyer_tel: "${sessionScope.phoneNo}",
-				    buyer_addr: "${sessionScope.juso}",
-				    buyer_postcode: "01181"
-				}, function (rsp) { // callback
-					 if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
-					        // jQuery로 HTTP 요청
-					        jQuery.ajax({
-					            url: "https://www.myservice.com/payments/complete", // 가맹점 서버
-					            method: "POST",
-					            headers: { "Content-Type": "application/json" },
-					            data: {
-					                imp_uid: rsp.imp_uid,
-					                merchant_uid: rsp.merchant_uid
-					            }
-					        }).done(function (data) {
-
-					        })
-					    } else {
-					        alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
-					    }
-				});
+					//오늘 날짜 8자리수로 표현(20180601)
+					var today = new Date();
+					var dd = today.getDate();
+					var mm = today.getMonth()+1; 	//January is 0!
+					var yyyy = today.getFullYear();
+					if(dd<10) {
+					    dd='0'+dd
+					} 
+					if(mm<10) {
+					    mm='0'+mm
+					} 
+					today = yyyy + mm + dd;    //ex) 2018/06/01
+					
+					var productCount = $("#productCount").val();
+					var totalPrice = productCount * parseInt("${product.price}");
+					var agree = $('input:checkbox[id="customCheck1"]').is(":checked");
+					
+					if(productCount != "" && agree == true){
+						var IMP = window.IMP; // 생략해도 괜찮습니다.
+						IMP.init("imp66707057"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
+						
+						// IMP.request_pay(param, callback) 호출
+						IMP.request_pay({ // param
+						    pg: "html	5_inicis",
+						    pay_method: "card",
+						    merchant_uid: "ORD"+today+"-" + "${sessionScope.zeroPlusId}",  // ORD20190601-00001
+						    name: "${company.name}",
+						    amount:  totalPrice,	
+						    buyer_email: "${sessionScope.login}",
+						    buyer_name: "${sessionScope.name}",
+						    buyer_tel: "${sessionScope.phoneNo}",
+						    buyer_addr: "${sessionScope.juso}",
+						    buyer_postcode: "${sessionScope.zeroPlusId}"				   // 기본키(id)값 앞에 5자리까지 0 추가    ex)id=12 --> 00012
+						}, function (rsp) { // callback
+							 if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+							       alert("결제에 성공했습니다.");
+							    } else {
+							        alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+							    }
+						});
+					}else{
+						if( productCount == "" && agree == false )
+							myAlert("INFOMATION !","날짜,수량 선택 및 취소규정에 동의해 주세요");
+						else if( agree == false )
+							myAlert("INFOMATION !","취소규정에 동의해 주세요");
+						else if( productCount == "" )
+							myAlert("INFOMATION !","하루이상 날짜 혹은 수량을 선택해 주세요");
+					}
 			});
 });
 

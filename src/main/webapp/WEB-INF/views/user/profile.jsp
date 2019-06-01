@@ -118,6 +118,11 @@
                                 <!-- <button class="btn btn-circle btn-secondary"><i class="mdi mdi-twitter"></i></button>
                                 <button class="btn btn-circle btn-secondary"><i class="mdi mdi-youtube-play"></i></button> -->
                            	</div>
+                              <div class="card-body">
+                                <small class="text-muted p-t-30 db">증명서 뽑기</small>
+                                <br/>
+                                <button id="print" class="btn btn-circle btn-secondary"  onclick="location.href='/user/print'"><i class="icon-magic-wand"></i></button>
+                           	</div>
                         </div>
                     </div>
                     
@@ -265,6 +270,10 @@
    	
 	   		$("#modify").on("click",function(){
 	   		  $( "#toggle" ).toggle( "slide" );
+	   		});
+	   		
+	   		$("#print").on("click",function(){
+	   			
 	   		});
 	   		
 	   		

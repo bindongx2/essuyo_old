@@ -25,7 +25,7 @@
 		<div id="formContent">
 
 			<div class="fadeIn first">
-				<img src="/resources/images/backpack.png" id="icon" alt="User Icon" />
+				<img src="/resources/images/backpack_.png" id="icon" alt="User Icon" />
 				<h1 style="color: #0d0d0d">로그인</h1>
 			</div>
 
@@ -33,7 +33,7 @@
 			
 				<input type="email" title="올바르지 않은 이메일 형식입니다." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name="email" class="fadeIn second" placeholder="이메일" required >
 				<input type="password" id="password" name="password" class="fadeIn second" minlength="4"
-					   data-msg-minlength="최소 {0} 자리 이상 입력해야 합니다." size="30" maxlength="12" placeholder="비밀번호" required>
+					   data-msg-minlength="최소 {0} 자리 이상 입력해야 합니다."size="30" maxlength="12" placeholder="비밀번호" required>
 				<input type="submit" class="fadeIn fourth" value="로그인">
 			</form>
 

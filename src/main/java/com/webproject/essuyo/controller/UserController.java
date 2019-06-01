@@ -57,6 +57,15 @@ public class UserController {
 	@Autowired
 	private FacilityAdminService FAService;
 
+	// 엑셀파일에 데이터 파인딩하여 가져오기
+	@RequestMapping(value = "/print", method = RequestMethod.GET)
+	public void print(UserVO vo, Model model) throws Exception {
+		logger.info("prints.......");
+		
+		System.out.println("id : " + vo.getId());
+		System.out.println("Name : " + vo.getName());
+	}
+	
 	// GET 방식으로 회원가입 페이지에 접근. 그냥 회원가입 페이지로 보내준다
 	@RequestMapping(value = "/regist", method = RequestMethod.GET)
 	public void registGet(UserVO vo, Model model) throws Exception {

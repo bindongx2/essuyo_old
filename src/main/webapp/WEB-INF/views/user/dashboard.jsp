@@ -202,7 +202,7 @@
     
     <script type="template" id="reservation-company-template" >
 		<tr>
-  		   <td class="txt-oflo"><a href="/product/detail?id={{companyId}}">{{typeName}}</a></td>
+  		   <td class="txt-oflo"><a href="/company/detail?id={{companyId}}">{{typeName}}</a></td>
 		   <td class="txt-oflo">{{productName}}</td>
            <td><span class="label label-{{stateClass}} label-rounded">{{state}}</span> </td>
            <td class="txt-oflo">{{resDate}}</td>

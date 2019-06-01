@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.webproject.essuyo.domain.UserVO;
 
 import com.webproject.essuyo.service.impl.UserServiceImpl;
+import com.webproject.essuyo.utility.CommonUtil;
 
 @Controller
 public class LoginController {
@@ -63,6 +64,11 @@ public class LoginController {
 			logger.info("new company login success");
 			session.setAttribute("companyLogin", vo.getBusinessId());
 			session.setAttribute("login", vo.getEmail());
+			session.setAttribute("name", vo.getName());
+			session.setAttribute("juso", vo.getJuso());
+			session.setAttribute("zeroPlusId", CommonUtil.plusZero(vo.getId()));
+			String phone = CommonUtil.phoneFormat(vo.getPhoneNo());  //핸드폰 번호 포멧팅(000-0000-0000)
+			session.setAttribute("phoneNo", phone);
 			service.updateLastDate(vo);
 			return "redirect:/";
 		} else {
@@ -71,7 +77,9 @@ public class LoginController {
 			session.setAttribute("login", vo.getEmail());
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("juso", vo.getJuso());
-			session.setAttribute("phoneNo", vo.getPhoneNo());
+			session.setAttribute("zeroPlusId", CommonUtil.plusZero(vo.getId()));
+			String phone = CommonUtil.phoneFormat(vo.getPhoneNo());  //핸드폰 번호 포멧팅(000-0000-0000)
+			session.setAttribute("phoneNo", phone);
 			service.updateLastDate(vo);
 			return "redirect:/";
 		}
@@ -82,18 +90,18 @@ public class LoginController {
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			RedirectAttributes rttr) throws Exception {
 
-		Object obj = session.getAttribute("login");
+		Object obj1 = session.getAttribute("login");
 		Object obj2 = session.getAttribute("companyLogin");
 		
 
-			if (obj != null && obj2 != null) {
+			if (obj1 != null && obj2 != null) {
 				session.removeAttribute("login");
 				session.removeAttribute("companyLogin");
 				session.invalidate();
 				
 				rttr.addFlashAttribute("errorMessageTitle", "로그아웃");
 				rttr.addFlashAttribute("errorMessage", "로그아웃하셨습니다");
-			} else if (obj != null) {
+			} else if (obj1 != null) {
 
 				session.removeAttribute("login");
 				session.invalidate();
