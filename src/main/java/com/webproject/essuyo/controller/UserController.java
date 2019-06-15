@@ -79,7 +79,7 @@ public class UserController {
 		oneData.put("gender", userVO.getGender());
 		oneData.put("juso", userVO.getJuso());
 		oneData.put("phoneNo", CommonUtil.phoneFormat(userVO.getPhoneNo()));  		
-		oneData.put("creDa te", CommonUtil.dateFormat(userVO.getCreDate(), "-"));				
+		oneData.put("creDate", CommonUtil.dateFormat(userVO.getCreDate(), "-"));				
 		oneData.put("sysDate", CommonUtil.dateFormat(date, "-"));
 				
 		model.addAttribute(listData);		
