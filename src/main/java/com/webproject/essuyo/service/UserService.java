@@ -69,4 +69,6 @@ public interface UserService {
 
 	public void updateLastDate(UserVO vo) throws Exception;
 
+	public UserVO print(UserVO vo) throws Exception;
+
 }

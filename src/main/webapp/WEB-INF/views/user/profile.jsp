@@ -17,7 +17,6 @@
 	<link rel="stylesheet" href="../resources/css/themify-icons.css">
 	<link rel="stylesheet" href="../resources/css/set1.css">
 
-
 </head>
 
 <body>
@@ -107,22 +106,25 @@
                                     </c:choose>
                                     
                              </div>	
-                                <div>
-                               	 <hr> 
-                            	</div>
-                                
-                              <div class="card-body">
-                                <small class="text-muted p-t-30 db">회원 정보 변경</small>
-                                <br/>
-                                <button id="modify" class="btn btn-circle btn-secondary"><i class="icon-magic-wand"></i></button>
-                                <!-- <button class="btn btn-circle btn-secondary"><i class="mdi mdi-twitter"></i></button>
-                                <button class="btn btn-circle btn-secondary"><i class="mdi mdi-youtube-play"></i></button> -->
-                           	</div>
-                              <div class="card-body">
-                                <small class="text-muted p-t-30 db">증명서 뽑기</small>
-                                <br/>
-                                <button id="print" class="btn btn-circle btn-secondary"  onclick="location.href='/user/print'"><i class="icon-magic-wand"></i></button>
-                           	</div>
+                                	<div>
+                               			 <hr> 
+                            		</div>
+                              <table><tr>
+	                              <td>
+	                            	 <div class="card-body">
+		                               	 <small class="text-muted p-t-30 db">회원 정보 변경</small>
+		                               	 <br/>
+		                               	 <button id="modify" class="btn btn-circle btn-secondary"><i class="icon-magic-wand"></i></button>
+	                          	 	 </div>
+	                              </td>
+                               	  <td> 
+		                              <div class="card-body">
+			                              <small class="text-muted p-t-30 db">증명서 발급</small>
+			                              <br/>
+			                              <button id="print" class="btn btn-circle btn-secondary"><i class="icon-magic-wand"></i></button>
+		                           	  </div>
+                          		  </td>
+                              </tr></table>  
                         </div>
                     </div>
                     
@@ -253,8 +255,14 @@
                 <a href="https://wrappixel.com">WrapPixel</a>.
             </footer>
         </div>
-
     </div>
+    
+<!--     증명서 발급 form -->
+    <form id="printForm" method="post" enctype="multipart/form-data" action="/user/print">
+    <input type="hidden" id="id" name="id" value="${user.id }">
+    </form>
+    
+    
     <script src="../resources/js/jquery/jquery.min.js"></script>
     <script src="../resources/js/popper/umd/popper.min.js"></script>
     <script src="../resources/js/bootstrap/bootstrap.min.js"></script>
@@ -267,13 +275,14 @@
     <script>
     $(document).ready(function(){
    
-   	
+   			//회원정보 변경 온클릭함수
 	   		$("#modify").on("click",function(){
 	   		  $( "#toggle" ).toggle( "slide" );
 	   		});
 	   		
+	   		//증명서 발급 온클릭함수
 	   		$("#print").on("click",function(){
-	   			
+	   			printForm.submit();
 	   		});
 	   		
 	   		
@@ -286,7 +295,7 @@
 	   			}
    			
 	   		});
-	   		
+ 	   		
 	   		//< 유저 썸네일
 	   		ImageThumbnail("#userImage","#imageFile");
     	
@@ -315,8 +324,6 @@
 				
 			return true;
 		}
-		
-   		
     </script>
 </body>
 

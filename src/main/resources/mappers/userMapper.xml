@@ -7,8 +7,7 @@
 <mapper namespace="com.webproject.essuyo.dao">
 
 	<!-- 로그인용 sql문. email과 password를 user 테이블에서 찾는다 -->
-	<select id="login"
-		resultType="com.webproject.essuyo.domain.UserVO">
+	<select id="login" resultType="com.webproject.essuyo.domain.UserVO">
 		select id, name, email, password, fail_password, age, gender,
 		cre_date AS creDate, last_date AS lastDate, juso, phone_no AS phoneNo,
 		business_id AS businessId, image_info_id AS imageInfoId 
@@ -22,6 +21,14 @@
 		set last_date = NOW()
 	 	where id = #{id}
 	</update>
+	
+<!--  증명서 발급 하기 위한 개인정보 sql -->
+	<select id="print" resultType="com.webproject.essuyo.domain.UserVO">
+		select id, name, email, password, fail_password, age, gender,
+		cre_date AS creDate, last_date AS lastDate, juso, phone_no AS phoneNo
+		from user
+		where id = #{id}
+	</select>
 
 	<!-- 이메일 중복체크용 sql 입력된 이메일을 카운트한다 -->
 	<select id="checkId" resultType="int">

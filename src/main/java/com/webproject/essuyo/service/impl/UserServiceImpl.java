@@ -52,6 +52,13 @@ public class UserServiceImpl implements UserService {
 
 		dao.regist(vo);
 	}
+	
+	// 증명서 발급  서비스
+	@Override
+	public UserVO print(UserVO vo) throws Exception {
+		
+		return dao.print(vo);
+	}
 
 	@Override
 	public void keepLogin(String email, String seesionId, Date next) throws Exception {

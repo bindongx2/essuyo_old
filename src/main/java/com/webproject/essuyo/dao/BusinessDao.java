@@ -18,7 +18,7 @@ public class BusinessDao {
 	}
 	
 	public BusinessVO selectById(int id) throws Exception{
-		return sqlSession.selectOne(NAME_SPACE + ".selectById" , id);
+		return sqlSession.selectOne(NAME_SPACE + ".R" , id);
 	}
 	
 	public int updateGoodCountByBusinessId(int id) throws Exception{

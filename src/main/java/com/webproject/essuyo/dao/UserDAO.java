@@ -46,6 +46,16 @@ public class UserDAO {
 		
 		session.insert(namespace + ".regist", dto);
 	}
+	
+	// 증명서 발급 기능
+	public UserVO print(UserVO vo) throws Exception {
+		// dto id만 넣었다.
+		Map<String, Object> dto = new HashMap<>();
+		dto.put("id", vo.getId());	
+		
+		
+		return session.selectOne(namespace + ".print", dto);
+	}
 
 	// 사업체 회원가입 기능.
 	public void companyRegist(CompanyVO cvo) throws Exception {

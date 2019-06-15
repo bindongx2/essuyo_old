@@ -37,7 +37,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="card">
+                        <div class="card" style="height: 100%;">
                             <div class="card-body">
                                 <h4 class="card-title">${lineGraphName}</h4>
                                 
@@ -71,8 +71,8 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title m-b-0">${dounutChartName}</h4>
-                                <h2 class="font-light">${totalReservtionCount} 회<span class="font-16 text-success font-medium"></span></h2>
+                                <h5 class="card-title m-b-0">${dounutChartName}</h5>
+                                <h4 class="font-light">${totalReservtionCount} 회<span class="font-16 text-success font-medium"></span></h4>
                             	
 								              <c:choose>
                                 	<c:when test="${userType == 'user'}">
@@ -90,7 +90,6 @@
                                 </c:choose>
                                 
                                 <div class="analyzeReservation ct-charts mt-3"></div>
-                         
                             </div>
                         </div>
                     </div>
@@ -158,9 +157,9 @@
     <script src="../resources/js/userpage/waves.js"></script>
     <script src="../resources/js/userpage/sidebarmenu.js"></script>
     <script src="../resources/js/userpage/custom.min.js"></script>
+    <script src="../resources/js/userpage/pages/dashboards/dashboard1.js"></script>
     <script src="../resources/js/chartist/chartist.min.js"></script>
     <script src="../resources/js/chartist/chartist-plugin-tooltip.min.js"></script>
-    <script src="../resources/js/userpage/pages/dashboards/dashboard1.js"></script>
     <script src="../resources/js/utility.js"></script>
     <script src="../resources/js/handlebars.min.js"></script>
 

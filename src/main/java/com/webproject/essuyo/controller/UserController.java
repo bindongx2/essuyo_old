@@ -1,6 +1,7 @@
 package com.webproject.essuyo.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webproject.essuyo.domain.BusinessVO;
@@ -32,7 +34,9 @@ import com.webproject.essuyo.service.FacilityAdminService;
 import com.webproject.essuyo.service.ImageAdminService;
 import com.webproject.essuyo.service.ReservationService;
 import com.webproject.essuyo.service.impl.UserServiceImpl;
+import com.webproject.essuyo.utility.CommonUtil;
 import com.webproject.essuyo.utility.Encryption;
+import com.webproject.essuyo.utility.Upload;
 
 @Controller
 @RequestMapping("/user/*")
@@ -57,18 +61,40 @@ public class UserController {
 	@Autowired
 	private FacilityAdminService FAService;
 
-	// 엑셀파일에 데이터 파인딩하여 가져오기
-	@RequestMapping(value = "/print", method = RequestMethod.GET)
-	public void print(UserVO vo, Model model) throws Exception {
-		logger.info("prints.......");
+	
+	// 엑셀파일에 데이터 파인딩하여 가져오기(2019-06-13)
+	@RequestMapping(value = "/print", method = RequestMethod.POST)
+	public View print(UserVO vo, Model model) throws Exception {
+		logger.info("print.......");
+		UserVO userVO = service.print(vo);
 		
-		System.out.println("id : " + vo.getId());
-		System.out.println("Name : " + vo.getName());
+		List<Object> listData = new ArrayList<Object>();
+		Map<String, Object> oneData = new HashMap<String, Object>();
+		Date date = new Date();
+
+		
+		oneData.put("name", userVO.getName());
+		oneData.put("email", userVO.getEmail());
+		oneData.put("age", userVO.getAge());
+		oneData.put("gender", userVO.getGender());
+		oneData.put("juso", userVO.getJuso());
+		oneData.put("phoneNo", CommonUtil.phoneFormat(userVO.getPhoneNo()));  		
+		oneData.put("creDa te", CommonUtil.dateFormat(userVO.getCreDate(), "-"));				
+		oneData.put("sysDate", CommonUtil.dateFormat(date, "-"));
+				
+		model.addAttribute(listData);		
+		model.addAttribute(oneData);		
+		
+		System.out.println("oneData : " + oneData.toString());
+		System.out.println("model : " + model.toString());
+		
+		return new Upload();
 	}
 	
+		
 	// GET 방식으로 회원가입 페이지에 접근. 그냥 회원가입 페이지로 보내준다
 	@RequestMapping(value = "/regist", method = RequestMethod.GET)
-	public void registGet(UserVO vo, Model model) throws Exception {
+	public void registGet(UserVO vo, Model modex) throws Exception {
 		logger.info("registGet.......");
 	}
 
@@ -98,7 +124,6 @@ public class UserController {
 		// RedirectAttributes는 Model기능을 그대로 확장한 상태에서 몇개의 메소드 추가 형태(데이터를 숨겨서 보내고 싶을때 사용)
 		// RedirectAttributes는 redirect가 발생하기 전에 모든 플래시 속성을 세션에 저장한다.
 		logger.info("registPost.......");
-
 		try {
 			service.regist(vo);
 			// addFlashAttribute()는 redirect직전 플래시에 저장하는 메소드(redirect 이후에는 사라짐)
@@ -112,7 +137,7 @@ public class UserController {
 			return "redirect:/user/regist";
 		}
 		return "redirect:/login";
-	}
+	}	
 
 	// 컴퍼니 테이블을 수정하는 서비스의 컨트롤러(미완성)
 	// 테스트 중. 컴퍼니 테이블 작성 페이지로 가는 컨트롤러

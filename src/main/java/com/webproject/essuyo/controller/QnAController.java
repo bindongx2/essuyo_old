@@ -1,7 +1,6 @@
 package com.webproject.essuyo.controller;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -15,13 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webproject.essuyo.domain.MessageCriteriaVO;
-import com.webproject.essuyo.domain.MessageListCriVO;
-import com.webproject.essuyo.domain.MessagePageMakerVO;
-import com.webproject.essuyo.domain.NoticeVO;
 import com.webproject.essuyo.domain.QnACriteriaVO;
 import com.webproject.essuyo.domain.QnAPageMakerVO;
 import com.webproject.essuyo.domain.QnAVO;
-import com.webproject.essuyo.service.MessageService;
 import com.webproject.essuyo.service.QnAService;
 
 @Controller

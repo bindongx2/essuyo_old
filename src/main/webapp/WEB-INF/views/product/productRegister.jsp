@@ -82,10 +82,10 @@
 										<span class="icon-calendar"></span>&nbsp;&nbsp;판매 날짜
 									</p>
 
-									<input style="border-right: none; width: 48%;" type="text"
-										name="saleStartDate" id="startDate" class="input-border" readOnly>
-									<input style="border-left: none; width: 48%;" type="text"
-										name="saleEndDate" id="endDate" class="input-border" readOnly>
+									<input style="width: 48%;" type="text"
+										name="saleStartDate" id="startDate" class="input-border" placeholder="시작일" readOnly>
+									<input style="width: 48%;" type="text"
+										name="saleEndDate" id="endDate" class="input-border" placeholder="종료일" readOnly>
 
 								</div>
 								<hr>

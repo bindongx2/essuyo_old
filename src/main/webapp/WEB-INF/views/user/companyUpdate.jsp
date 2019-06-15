@@ -55,7 +55,7 @@
 							</div>
 							<div class="row">
 								<div class="col-12 align-self-center">
-									<h3 style="color:#4F5467; text-align: center;">사업 시작 하기!</h3>
+									<h3 style="color:#4F5467; text-align: center;">사업 시작 하기</h3>
 								</div>
 							</div>
 									
