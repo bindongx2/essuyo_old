@@ -152,8 +152,9 @@ public class UserServiceImpl implements UserService {
 		try {
 				if( businessDao.updateGoodCountByBusinessId(businessId) != 0) {
 					return businessDao.selectById(businessId).getGood();
+				}else {
+					return 0;
 				}
-			return 0;
 		} catch (Exception e) {
 			logger.error("비지니스 조회 오류.. {} ", e.toString());
 			return 0;

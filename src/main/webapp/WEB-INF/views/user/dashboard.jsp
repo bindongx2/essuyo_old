@@ -31,13 +31,10 @@
         <%@ include file="/pageframe/admin-navigation.jsp" %>
         
         <div class="page-wrapper">
-
- 
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="card" style="height: 100%;">
+                        <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">${lineGraphName}</h4>
                                 
@@ -157,7 +154,7 @@
     <script src="../resources/js/userpage/waves.js"></script>
     <script src="../resources/js/userpage/sidebarmenu.js"></script>
     <script src="../resources/js/userpage/custom.min.js"></script>
-    <script src="../resources/js/userpage/pages/dashboards/dashboard1.js"></script>
+    <script src="../resources/js/userpage/pages/dashboards/dashboard1.js"></script>  <!-- 차트에 들어가는 함수 js -->
     <script src="../resources/js/chartist/chartist.min.js"></script>
     <script src="../resources/js/chartist/chartist-plugin-tooltip.min.js"></script>
     <script src="../resources/js/utility.js"></script>

@@ -98,6 +98,13 @@
                             </a>
                         </li>
                         
+                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/user/dashboard2" aria-expanded="false">
+                                <i class="icon-earphones-alt"></i>
+                                <span class="hide-menu">DashBoard</span>
+                            </a>
+                        </li>
+                        
                           <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/logout" aria-expanded="false">
                                 <i class="icon-logout"></i>

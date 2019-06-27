@@ -214,7 +214,7 @@
 										<p>${company.homepage}</p></li>
 
 								</ul>
-							<div class="bottom-icons">
+								<div class="bottom-icons">
 									<c:choose>
 										<c:when test="${company.state == '영업중'}">
 											<div class="open-now">${company.state}</div>

@@ -338,6 +338,20 @@ public class UserController {
 		return "/user/dashboard";
 
 	}
+	//임시(하상재)
+	@GetMapping("/dashboard2")
+	public String showDashboardPage1(HttpSession httpSession, Model model) {
+		
+		String email = (String) httpSession.getAttribute("login");
+		UserVO user = service.getUserVO(email);
+		
+		model.addAttribute("userType", "user");
+		model.addAttribute("id", user.getId());
+		setUserDashboard(email, "user", user.getId(), model);
+		
+		return "/user/dashboard2";
+		
+	}
 
 	@GetMapping("/dashboardCompany")
 	public String showCompanyDashboardPage(HttpSession httpSession, RedirectAttributes redirectAttr, Model model) {
@@ -362,7 +376,8 @@ public class UserController {
 		}
 
 	}
-
+	
+	//DashBoard에 사용되는 매개변수들(COMPANY)
 	public void setCompanyDashboard(String email, String type, int id, Model model) {
 
 		/*****************************************************************************/
@@ -405,7 +420,9 @@ public class UserController {
 		model.addAttribute("sparkLineName", "수입");
 
 	}
-
+	
+	
+	//DashBoard에 사용되는 매개변수들(USER)
 	public void setUserDashboard(String email, String type, int id, Model model) {
 
 		/*****************************************************************************/

@@ -130,11 +130,11 @@ public class RestApiController {
 	public Integer setGoodCount(@PathVariable int userId, HttpSession httpSeesion){
 
 		String email = (String)httpSeesion.getAttribute("login");
-		
 		if( email != null ) {
 			return userService.setGoodCount(userService.getUserVO(userId).getBusinessId());
+		} else {
+			return 0;
 		}
-		return 0;
 	}
 	
 	// 회원가입 시 이메일 중복 체크

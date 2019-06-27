@@ -317,7 +317,8 @@ public class ReservationServiceImpl implements ReservationService {
 		List<List<Integer>> comprehensive = new ArrayList<>();
 
 		int MaxMonth = 12;
-
+		
+		//monthlyList리스트에 0,0,0,0~ 12개 만들기
 		for (int i = 0; i < MAX_CATEGORY_COUNT; i++) {
 			List<Integer> monthlyList = new ArrayList<>();
 			for (int m = 0; m < MaxMonth; m++) {
@@ -327,6 +328,7 @@ public class ReservationServiceImpl implements ReservationService {
 		}
 
 		try {
+			//월마다 예약 총 횟수 Count
 			List<Map<String, Object>> resultMap = reservationDao
 					.selectComprehensiveReservation(new SQLParamVO(type, id));
 
