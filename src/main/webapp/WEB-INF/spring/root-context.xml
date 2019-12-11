@@ -44,31 +44,7 @@
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<!-- @@@@@@@@@@@@ batch bean 추가 @@@@@@@@@@@@ -->
-	<!-- 1. 반복적으로 수행될 작업 설정 -->
-	
-	
-	<bean id="batchJob" class="org.framework.scheduling.quartz.jobDetailFactoryBean">
-		<property name="jobClass"/>
-	</bean>
-	
-<!-- 	2. 작업 수행을 얼마 간격으로 할 것인지 설정 -->
-	<bean id="cronTrgger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="batchJob"></property>
-		<property name="cronExpression" value="*/10 * * * * ?" />  <!-- 10초마다 실행된다 -->
-	</bean>
-	
-<!-- 	1,2번에서 설정한 내용 실제 수행되도록 설정 -->
-	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-		<property name="triggers">
-			<list>
-				<ref bean="cronTrgger"/>
-			</list>
-		</property>
-	</bean> 
-	
 
-	<!--// @@@@@@@@@@@@ batch bean @@@@@@@@@@@@ -->
 
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
