@@ -11,8 +11,10 @@ public class CodingTest{
 	public static void main(String[] args) {
 	}
 	
-		//프래그래머스 -->해시 -->완주하지 못한 선수
-		//마라톤 참가선수중 한사람 빼고 모두 완주했다. 완주하지 못한 한사람을 찾는 알고리즘
+		/*
+		 프래그래머스 -->해시 -->완주하지 못한 선수 마라톤 참가선수중 한사람 빼고 모두 완주했다.
+		  완주하지 못한 한사람을 찾는 알고리즘
+		 */
 		class Solution {
 		    public String solution(String[] participant, String[] completion) {
 		        String answer = "";
@@ -31,9 +33,11 @@ public class CodingTest{
 		    }
 		}
 		
-		//자연수N의 각자릿수의 합을 구하는 알고리즘
-		//String stringValue = Integer.toString(int a);
-		//int intValue = Integer.parseInt(String a);
+		/*
+	 	  자연수N의 각자릿수의 합을 구하는 알고리즘 
+		 String stringValue = Integer.toString(int a);
+		 int intValue = Integer.parseInt(String a);
+		*/
 		public class Solution2 {
 		    public int solution(int n) {
 		        int answer = 0;
@@ -47,8 +51,11 @@ public class CodingTest{
 		    }
 		}
 		
-		//두배열은  자연수로 구성된 길이가 같은 배열이다. 각 배열에서 하나의 원소를 뽑아 두수를 곱한다음  누적된 값을 모두 더한다. 
-		//더한 값이 최소값으로 나오게 하는 알고리즘
+		
+		/*
+		 두배열은  자연수로 구성된 길이가 같은 배열이다. 각 배열에서 하나의 원소를 뽑아 두수를 곱한다음  누적된 값을 모두 더한다. 
+		 더한 값이 최소값으로 나오게 하는 알고리즘
+		*/
 		 public int solution(int []A, int []B)
 		    {
 		        int answer = 0;
@@ -84,8 +91,11 @@ public class CodingTest{
 						        return answer;
 						    }
 			}
-	
-		 //2018윈터코딩 --> 스킬트리
+		 
+		 
+		 /*
+		  2018윈터코딩 --> 스킬트리
+		 */
 	    public int solution(String skill, String[] skill_trees) {
 	        int answer = 0;
 	        ArrayList<String> skillTrees = new ArrayList<String>(Arrays.asList(skill_trees));
