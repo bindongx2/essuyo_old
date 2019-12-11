@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.ss.usermodel.Workbook;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.web.servlet.view.document.AbstractXlsView;
 
@@ -26,8 +25,15 @@ public class Upload extends AbstractXlsView {
 		InputStream is = null;
 		OutputStream os = null;
 		String filePath = "C:\\Users\\HSJ\\git\\essuyo\\src\\main\\webapp\\resources\\excel\\cert06.xls";
+//		String filePath = "../../git/essuyo/src/main/webapp/resources/excel/cert06.xls";
 		
-		try {
+		// 현재 작업 위치	
+//		String nowPath = System.getProperty("user.dir"); 	
+//			  (nowPath : C:\Users\HSJ\Desktop\eclipse)
+		
+//		String nowPath2 = Upload.class.getResource("").getPath();
+//			  (nowPath2 : /C:/Users/HSJ/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/essuyo/WEB-INF/classes/com/webproject/essuyo/utility/)
+		try {	
 		is = new FileSystemResource(filePath).getInputStream();
 		os = response.getOutputStream();
 		

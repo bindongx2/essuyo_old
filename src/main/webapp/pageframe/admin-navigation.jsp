@@ -101,7 +101,21 @@
                          <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/user/dashboard2" aria-expanded="false">
                                 <i class="icon-earphones-alt"></i>
-                                <span class="hide-menu">DashBoard</span>
+                                <span class="hide-menu">DashBoard(연습중)</span>
+                            </a>
+                        </li>
+                        
+                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/user/boardPratice" aria-expanded="false">
+                                <i class="icon-earphones-alt"></i>
+                                <span class="hide-menu">게시판(연습중)</span>
+                            </a>
+                        </li>
+                        
+                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/horse/" aria-expanded="false">
+                                <i class="icon-earphones-alt"></i>
+                                <span class="hide-menu">배당사이트</span>
                             </a>
                         </li>
                         

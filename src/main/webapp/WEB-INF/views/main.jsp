@@ -14,10 +14,10 @@
 	<link rel="stylesheet" href="resources/css/style.css">
 	<link rel="stylesheet" href="resources/css/tab.css">
 </head>
-
 <body>
-	
+		
 	<%@ include file="/pageframe/header.jsp"%>
+
 
 	<section class="slider d-flex align-items-center">
 		<div class="container">
@@ -263,6 +263,10 @@
 			document.location.href = "company/list?type=" +'"'+ type+'"' +"&name="+'"'+ name+'"';
 		}
 	};
+	
+	$(document).ready(function() {
+		});
+	
 	</script>
 </body>
 

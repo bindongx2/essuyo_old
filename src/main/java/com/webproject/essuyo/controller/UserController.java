@@ -62,6 +62,13 @@ public class UserController {
 	private FacilityAdminService FAService;
 
 	
+	//2019-06-29(게시판 연습중) sidebar에 있는 게시판 연습중
+	@RequestMapping(value = "/boardPratice", method = RequestMethod.GET)
+	public String abc() throws Exception{
+		return "user/boardPratice";
+	}
+	
+	
 	// 엑셀파일에 데이터 파인딩하여 가져오기(2019-06-13)
 	@RequestMapping(value = "/print", method = RequestMethod.POST)
 	public View print(UserVO vo, Model model) throws Exception {

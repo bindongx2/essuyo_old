@@ -181,40 +181,42 @@
 				success : function(data) {					
 					var salesCount = data.salesCount;
 					$("#type1").text(type);
+					
 					if(salesCount === undefined){
-					$("#count1").text("");	
+						$("#count1").text("");	
 					}else{
-					$("#count1").text(salesCount+"개의 검색된");				
+						$("#count1").text(salesCount+"개의 검색된");				
 					}
 					
 					if(salesCount == 0){
 			         	var source1 = $("#templateNone").html();
 						var template = Handlebars.compile(source1);						
 						$("#salesList").append(template());
-						$("#salesList").append(template());
+// 						$("#salesList").append(template());
 						
 					} else {
 		
-					var source = $("#template").html();
-					var template = Handlebars.compile(source);
-					data.sales.forEach(function(data2) {
-						$("#salesList").append(template(data2));
-						
-						if (data2.score >= 4) {
-							$(".score_info").attr('class', 'featured-rating-green');
-						} else if (data2.score >= 2) {
-							$(".score_info").attr('class', 'featured-rating-orange');
-						} else {
-							$(".score_info").attr('class', 'featured-rating');
-						}
-						if (data2.state == "영업중") {
-							$(".state-info").attr('class', 'open-now');
-						} else {
-							$(".state-info").attr('class','closed-now');
-						}
-					});
-					initGeocoder(data);
-				}
+						var source = $("#template").html();
+						var template = Handlebars.compile(source);
+						data.sales.forEach(function(data2) {
+							$("#salesList").append(template(data2));
+							
+							if (data2.score >= 4) {
+								$(".score_info").attr('class', 'featured-rating-green');
+							} else if (data2.score >= 2) {
+								$(".score_info").attr('class', 'featured-rating-orange');
+							} else {
+								$(".score_info").attr('class', 'featured-rating');
+							}
+							
+							if (data2.state == "영업중") {
+								$(".state-info").attr('class', 'open-now');
+							} else {
+								$(".state-info").attr('class','closed-now');
+							}
+						});
+						initGeocoder(data);
+					}
 				}				
 			});	
 		}		
