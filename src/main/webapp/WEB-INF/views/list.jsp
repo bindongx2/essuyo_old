@@ -272,34 +272,38 @@
 		var value="";
 		var type=${type};
 		var name=${name};
-				
+		
 		$(document).ready(function() {
 			ajax_fuc();	
-			
-// 		$(document).height()  -> 현재 내가 보고 있는 문서의 높이
-// 		$(window).height() -> 현재 내가 키고 있는 브라우저의 높이
-// 		$(window).scrollTop() -> 현재 브라우저 스크롤이 있는 위치
-	    $(window).scroll(function() {
-			if ($(window).scrollTop() == $(document).height()- $(window).height()) {
-				start++;	
-				ajax_fuc();			
-	   		 }
-	    });
-	
-	    if(type != "전체"){	    	
-			$("#search").click(function() {
-				$("#salesList").html("");
+					
 				
-				//마커 지우기
-				 for (var i = 0; i < markers.length; i++) {
-				        markers[i].setMap(null);
+		$(window).scroll(function() {
+			
+				var scrollTop = $(window).scrollTop();
+				var document_height = $(document).height();
+				var window_height = $(window).height();
+				
+				scrollTop = Math.round(scrollTop);  //윈7 크롬만 소수로 나타내서 에러 발생!
+				if ( scrollTop == document_height - window_height) {
+					start++;	
+					ajax_fuc();			
+		   		 }
+		});
+		
+			    if(type != "전체"){	    	
+					$("#search").click(function() {
+						$("#salesList").html("");
+						
+						//마커 지우기
+						 for (var i = 0; i < markers.length; i++) {
+						        markers[i].setMap(null);
+					    }
+						 
+						start = 0;
+						ajax_fuc();
+		 			});
 			    }
-				 
-				start = 0;
-				ajax_fuc();
- 			});
-	    }
-	    
+		    
 		});
 	</script>
  
@@ -345,12 +349,12 @@
     <div class="featured-title-box">
 	<div class="bottom-icons">
 								<div class="state-info"></div>
-											</div>
+											</div>a
 										</div>
 						           </div>
 					         	</div>		
 </div>			 
 </script>
 </body>
-
+	
 </html>
